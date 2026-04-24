@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Terminology Decoded</title>
+<title>Terminally Curious</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -37,6 +37,64 @@
     padding: 0;
   }
 
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 52px;
+    background: #0a0a0a;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links li a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s, background 0.15s;
+    cursor: pointer;
+    display: block;
+  }
+
+  .nav-links li a:hover { color: var(--text); }
+  .nav-links li a.active { color: var(--accent); }
+
+  .nav-links li:last-child a {
+    margin-left: 16px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .nav-links li:last-child a:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-links li:last-child a.active { border-color: var(--accent); color: var(--accent); }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HEADER ── */
   header {
     padding: 48px 32px 32px;
     border-bottom: 1px solid var(--border);
@@ -65,6 +123,7 @@
     max-width: 560px;
   }
 
+  /* ── FILTERS ── */
   .legend {
     display: flex;
     flex-wrap: wrap;
@@ -100,6 +159,7 @@
   .filter-btn[data-cat="concept"] { background: var(--tag-concept); color: var(--tag-concept-text); }
   .filter-btn[data-cat="all"] { background: #1a1a1a; color: var(--text); border-color: var(--border); }
 
+  /* ── GRID ── */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -118,7 +178,6 @@
   }
 
   .card:hover { background: var(--surface); }
-
   .card.hidden { display: none; }
 
   .card-top {
@@ -169,6 +228,14 @@
     color: #ccc;
   }
 
+  .relation {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+
+  .relation strong { color: var(--accent2); }
+
   .analogy {
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
@@ -177,20 +244,88 @@
     padding: 8px 12px;
     border-left: 2px solid var(--accent);
     background: #1a1800;
-    margin-top: 2px;
+    align-self: flex-start;
+    width: 100%;
   }
 
-  .relation {
+  /* ── ABOUT PAGE ── */
+  .about-page {
+    min-height: calc(100vh - 52px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 32px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      #ffffff04 40px,
+      #ffffff04 41px
+    );
+  }
+
+  .about-card {
+    display: flex;
+    gap: 56px;
+    align-items: flex-start;
+    max-width: 860px;
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 56px;
+  }
+
+  .about-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-label {
     font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--muted);
-    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
-  .relation strong {
-    color: var(--accent2);
+  .about-quote {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--accent);
   }
 
+  .about-photo-slot {
+    width: 200px;
+    flex-shrink: 0;
+    aspect-ratio: 3/4;
+    border: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #111;
+  }
+
+  .about-photo-slot span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 0 12px;
+    line-height: 1.6;
+  }
+
+  .about-photo-slot .photo-icon {
+    font-size: 2rem;
+    opacity: 0.2;
+  }
+
+  /* ── FOOTER ── */
   footer {
     padding: 32px;
     border-top: 1px solid var(--border);
@@ -203,433 +338,478 @@
 </head>
 <body>
 
-<header>
-  <h1>Dev Terminology<br>Decoded</h1>
-  <p>Every shell, tool, protocol and concept you keep hearing about. Plain language, no fluff.</p>
-</header>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Terminally Curious</span>
+  <ul class="nav-links">
+    <li><a href="#" class="active" data-page="terminology">Terminology</a></li>
+    <li><a href="#" data-page="about">About</a></li>
+  </ul>
+</nav>
 
-<div class="legend">
-  <span class="legend-label">Filter:</span>
-  <button class="filter-btn active" data-cat="all">All</button>
-  <button class="filter-btn" data-cat="shell">Shell / CLI</button>
-  <button class="filter-btn" data-cat="network">Network / Protocol</button>
-  <button class="filter-btn" data-cat="tool">Tool / App</button>
-  <button class="filter-btn" data-cat="language">Language / Runtime</button>
-  <button class="filter-btn" data-cat="concept">Concept</button>
+<!-- TERMINOLOGY PAGE -->
+<div class="page active" id="page-terminology">
+
+  <header>
+    <h1>Terminally<br>Curious</h1>
+    <p>Every shell, tool, protocol and concept you keep hearing about. Plain language, no fluff.</p>
+  </header>
+
+  <div class="legend">
+    <span class="legend-label">Filter:</span>
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="shell">Shell / CLI</button>
+    <button class="filter-btn" data-cat="network">Network / Protocol</button>
+    <button class="filter-btn" data-cat="tool">Tool / App</button>
+    <button class="filter-btn" data-cat="language">Language / Runtime</button>
+    <button class="filter-btn" data-cat="concept">Concept</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- TERMINAL -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">Terminal <span>Also: Console, Command Line</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">A text-based window on your computer where you type commands directly. Instead of clicking buttons, you type instructions. The Terminal is the window itself; what runs inside it is a shell.</p>
+      <div class="analogy">Analogy: The Terminal is the room. The shell is the person inside who understands your instructions.</div>
+    </div>
+
+    <!-- SHELL -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">Shell <span>bash, zsh, fish, sh</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">The program that runs inside a Terminal and interprets what you type. When you open Terminal on a Mac, you're almost certainly running a shell called zsh (Z Shell) or bash. It reads your commands and tells the operating system what to do.</p>
+      <p class="relation"><strong>See also:</strong> Terminal, bash, zsh, PowerShell</p>
+      <div class="analogy">Analogy: The translator between you and the computer's core. You speak; the shell passes it on in a language the OS understands.</div>
+    </div>
+
+    <!-- BASH -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">bash <span>Bourne Again SHell</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">The most widely used shell in the world. It's been the default on Linux and older Macs for decades. When someone shares a "bash script," it's a text file full of commands that bash will run in sequence, like a recipe.</p>
+      <div class="analogy">Analogy: The universal language of command lines. If Terminal is the room, bash is the dialect almost everyone speaks.</div>
+    </div>
+
+    <!-- ZSH -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">zsh <span>Z Shell</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">A modern shell that replaced bash as the Mac default in 2019. It's more powerful with better autocomplete and plugin support. If you've opened Terminal on a modern Mac, you've been using zsh without knowing it.</p>
+      <div class="analogy">Analogy: bash's more capable younger sibling. Same idea, better features.</div>
+    </div>
+
+    <!-- POWERSHELL -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">PowerShell <span>Windows shell</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">Microsoft's command-line shell for Windows. Much more powerful than the older Command Prompt (cmd.exe). It can also run on Mac and Linux. Commands in PowerShell are called "cmdlets" and follow a Verb-Noun pattern like Get-Files or Set-Location.</p>
+      <p class="relation"><strong>Windows equivalent of:</strong> bash / zsh on Mac/Linux</p>
+      <div class="analogy">Analogy: Microsoft's answer to bash. Same category of tool, built for Windows first.</div>
+    </div>
+
+    <!-- CMD -->
+    <div class="card" data-cat="shell">
+      <div class="card-top">
+        <div class="term">cmd / Command Prompt <span>cmd.exe</span></div>
+        <span class="tag shell">Shell / CLI</span>
+      </div>
+      <p class="desc">The original Windows command line, dating back to the DOS era. Still available on all Windows machines. Very limited compared to PowerShell. You'll occasionally see instructions reference it, but PowerShell is almost always better.</p>
+      <div class="analogy">Analogy: The old DOS era tool still kept alive. Functional, but outdated.</div>
+    </div>
+
+    <!-- SSH -->
+    <div class="card" data-cat="network">
+      <div class="card-top">
+        <div class="term">SSH <span>Secure Shell</span></div>
+        <span class="tag network">Network / Protocol</span>
+      </div>
+      <p class="desc">A way to securely connect to another computer over the internet and control it via the command line, as if you were sitting in front of it. Used constantly by developers to access remote servers. The connection is encrypted so no one can spy on what you're doing.</p>
+      <p class="relation"><strong>Related:</strong> Terminal (you SSH via it), servers, GitHub authentication</p>
+      <div class="analogy">Analogy: A secure, private telephone line between your laptop and a computer sitting in a data center on the other side of the world.</div>
+    </div>
+
+    <!-- NPM -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">npm <span>Node Package Manager</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">A tool that comes bundled with Node.js. It lets you install, share and manage code packages (libraries written by other developers) that your project depends on. When someone says "run npm install," they mean: download all the code this project needs to work.</p>
+      <p class="relation"><strong>Requires:</strong> Node.js | <strong>Alternative:</strong> yarn, pnpm</p>
+      <div class="analogy">Analogy: The App Store for JavaScript code. Instead of building everything from scratch, you install packages someone else already wrote.</div>
+    </div>
+
+    <!-- NODE.JS -->
+    <div class="card" data-cat="language">
+      <div class="card-top">
+        <div class="term">Node.js <span>JavaScript runtime</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">JavaScript was originally only for browsers. Node.js lets you run JavaScript on your computer or a server, outside of any browser. This opened up JavaScript to backend development and tooling. Many dev tools (including npm, Claude Code, and Vite) are built on Node.js.</p>
+      <p class="relation"><strong>Enables:</strong> npm, Claude Code, most JS dev tools</p>
+      <div class="analogy">Analogy: Taking JavaScript out of the browser and letting it run anywhere, like a car engine removed and put in a boat.</div>
+    </div>
+
+    <!-- GIT -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">Git <span>Version Control System</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">A system that tracks every change you make to your code over time. You can go back to any previous version, work on experimental features in separate "branches," and merge changes together. Git runs locally on your machine. GitHub is a website that hosts your Git history online.</p>
+      <p class="relation"><strong>Not the same as:</strong> GitHub (GitHub hosts Git repositories online)</p>
+      <div class="analogy">Analogy: An infinite undo history for your entire project, with the ability to create parallel timelines and merge them back.</div>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">GitHub <span>Code hosting platform</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">A website that stores your Git repositories online. Think of it as cloud storage specifically for code, with collaboration features built in. You push your code from your machine to GitHub. Others can see it, contribute, and you can deploy from it.</p>
+      <p class="relation"><strong>Powered by:</strong> Git | <strong>Competitors:</strong> GitLab, Bitbucket</p>
+      <div class="analogy">Analogy: Google Drive, but designed specifically for code, with version history baked in.</div>
+    </div>
+
+    <!-- CLI -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">CLI <span>Command Line Interface</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Any tool or program you control entirely by typing text commands, rather than clicking buttons. The opposite is a GUI (Graphical User Interface). Developers use CLIs because they're fast, scriptable, and work on any machine. When docs say "run this in your CLI," they mean open Terminal and type it.</p>
+      <div class="analogy">Analogy: Giving instructions by typing a precise note versus navigating menus. More effort to learn, but much faster once you know it.</div>
+    </div>
+
+    <!-- GUI -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">GUI <span>Graphical User Interface</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Any interface you interact with visually: buttons, menus, windows. Most apps people use daily are GUIs. The opposite of a CLI. When someone builds a "frontend," they're building a GUI. VS Code has a GUI, but also accepts CLI commands.</p>
+      <div class="analogy">Analogy: Everything you normally click on a computer. Most of the digital world is a GUI.</div>
+    </div>
+
+    <!-- API -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">API <span>Application Programming Interface</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A defined way for two pieces of software to talk to each other. When your app asks Supabase for data, it uses Supabase's API. When you use Anthropic's Claude in code, you call the Claude API. APIs have rules: send a request in this format, and you'll get a response in that format.</p>
+      <div class="analogy">Analogy: A waiter in a restaurant. You don't go into the kitchen yourself. You tell the waiter (API) what you want, and it comes back with the result.</div>
+    </div>
+
+    <!-- HTTP / HTTPS -->
+    <div class="card" data-cat="network">
+      <div class="card-top">
+        <div class="term">HTTP / HTTPS <span>HyperText Transfer Protocol (Secure)</span></div>
+        <span class="tag network">Network / Protocol</span>
+      </div>
+      <p class="desc">The rules that govern how data travels between your browser and a website. HTTP is the base version; HTTPS adds encryption (the S stands for Secure). Every website URL starts with one of these. HTTPS is the standard now; browsers flag plain HTTP as unsafe.</p>
+      <div class="analogy">Analogy: The postal rules that define how a letter gets from sender to receiver. HTTPS adds a sealed envelope so no one can read it in transit.</div>
+    </div>
+
+    <!-- localhost -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">localhost <span>127.0.0.1</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A special address that always refers to your own computer. When you run a web server locally for development, you visit localhost:3000 (or similar) in your browser to see it. The number after the colon is the port. Nothing on localhost is visible to anyone else online.</p>
+      <p class="relation"><strong>Related:</strong> dev server, port, IP address</p>
+      <div class="analogy">Analogy: A private preview only you can see, running on your own machine before anything goes live on the internet.</div>
+    </div>
+
+    <!-- PORT -->
+    <div class="card" data-cat="network">
+      <div class="card-top">
+        <div class="term">Port <span>Network port number</span></div>
+        <span class="tag network">Network / Protocol</span>
+      </div>
+      <p class="desc">A numbered "channel" on a computer that a specific program listens on. Your computer has thousands of ports. Port 80 is standard HTTP, 443 is HTTPS, 3000 and 8080 are common development ports. When you see localhost:3000, the 3000 is the port.</p>
+      <div class="analogy">Analogy: Your home address is the computer. The port is the specific apartment number within it. Multiple programs live at the same address on different ports.</div>
+    </div>
+
+    <!-- DNS -->
+    <div class="card" data-cat="network">
+      <div class="card-top">
+        <div class="term">DNS <span>Domain Name System</span></div>
+        <span class="tag network">Network / Protocol</span>
+      </div>
+      <p class="desc">The internet's phone book. When you type "google.com" in a browser, DNS converts that human-readable name into the actual numeric IP address that computers use to find the server. Without DNS, you'd need to remember IP addresses to visit any website.</p>
+      <div class="analogy">Analogy: Saving contacts by name on your phone. You say "call Mom," the phone looks up her number. DNS does the same for websites.</div>
+    </div>
+
+    <!-- IP ADDRESS -->
+    <div class="card" data-cat="network">
+      <div class="card-top">
+        <div class="term">IP Address <span>Internet Protocol Address</span></div>
+        <span class="tag network">Network / Protocol</span>
+      </div>
+      <p class="desc">A unique numerical address assigned to every device on a network. Like a postal address for computers. IPv4 addresses look like 192.168.1.1. IPv6 is a newer format to handle more devices. Your router has a public IP; devices on your home network have local IPs.</p>
+      <div class="analogy">Analogy: Your home's street address, but for computers on a network.</div>
+    </div>
+
+    <!-- SERVER -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Server <span>Web server / remote machine</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A computer (or program) that waits for requests and responds to them. A web server receives HTTP requests and sends back web pages. A database server stores and retrieves data. "Server" can mean the physical machine in a data center, or just the software program responding to requests.</p>
+      <div class="analogy">Analogy: A restaurant that's always open. You place an order (send a request), it prepares and returns what you asked for (sends a response).</div>
+    </div>
+
+    <!-- DATABASE -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Database <span>SQL, Postgres, Supabase</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">An organized system for storing, retrieving and managing data. Relational databases (like PostgreSQL, which powers Supabase) store data in tables with rows and columns, like a very powerful spreadsheet. You query them using SQL to get the data you need.</p>
+      <div class="analogy">Analogy: An enormous, perfectly organized filing system that can answer questions like "give me every user who signed up last month" instantly.</div>
+    </div>
+
+    <!-- SQL -->
+    <div class="card" data-cat="language">
+      <div class="card-top">
+        <div class="term">SQL <span>Structured Query Language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">The language used to talk to relational databases. You write SQL to ask questions ("SELECT all users"), add data ("INSERT a new record"), or change data ("UPDATE this row"). It reads almost like English. Most backend developers need to know at least basic SQL.</p>
+      <div class="analogy">Analogy: The language for asking questions to a database. "Give me all rows where the city is Cape Town" is practically what the SQL looks like.</div>
+    </div>
+
+    <!-- FRONTEND / BACKEND -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Frontend / Backend <span>Client-side / Server-side</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Frontend is everything the user sees and interacts with: the interface in their browser. Backend is everything happening on the server: data storage, logic, authentication. Full-stack means working on both.</p>
+      <div class="analogy">Analogy: A restaurant again. Frontend is the dining room and menu. Backend is the kitchen, inventory, and accounting.</div>
+    </div>
+
+    <!-- DEPLOY -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Deploy <span>Deployment / Ship / Go live</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">The act of publishing your code so real users can access it on the internet. Before deployment, your app lives only on your machine. After deployment, it's live at a URL. Netlify handles this automatically when you push code to GitHub.</p>
+      <p class="relation"><strong>Your deploy platform:</strong> Netlify</p>
+      <div class="analogy">Analogy: Printing a document and handing it out. Development is writing the draft; deployment is publishing it to the world.</div>
+    </div>
+
+    <!-- REPOSITORY -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Repository <span>Repo</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A folder that Git tracks. Every project typically lives in its own repository. It contains all your code files plus a hidden .git folder where Git stores the entire history of changes. On GitHub, a repository is a project's home with all its history, branches, and settings.</p>
+      <div class="analogy">Analogy: A binder with every draft of a document you've ever saved, labeled by date and description, never throwing anything away.</div>
+    </div>
+
+    <!-- BRANCH -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Branch <span>Git branch</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A separate, parallel version of your code within the same repository. The main branch is typically the stable, live version. You create a new branch to work on a feature or experiment without affecting main. When the work is ready, you merge the branch back in.</p>
+      <div class="analogy">Analogy: A photocopy of a document you're allowed to scribble on. The original stays safe until you decide to apply your changes.</div>
+    </div>
+
+    <!-- COMMIT -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Commit <span>Git commit</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">A saved snapshot of your code at a specific point in time. Every commit has a message describing what changed. Git history is just a sequence of commits. Think of commits as manual save points that stack up into a timeline you can always scroll back through.</p>
+      <div class="analogy">Analogy: A checkpoint in a game. You can always load a previous save if something goes wrong.</div>
+    </div>
+
+    <!-- PUSH / PULL -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Push / Pull <span>Git push, git pull</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Push: sending your local commits up to GitHub (or another remote). Pull: downloading commits from GitHub to your local machine. These two commands keep your local code and the online repository in sync. You push your changes; your collaborators pull them down.</p>
+      <div class="analogy">Analogy: Push is uploading a file to Google Drive. Pull is downloading changes someone else made to a shared document.</div>
+    </div>
+
+    <!-- .ENV -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">.env / Environment Variables <span>Secrets and config</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Variables stored outside your code that hold sensitive information like API keys, passwords, and database URLs. A .env file keeps these off your actual codebase so they don't accidentally get committed to GitHub for the public to see.</p>
+      <div class="analogy">Analogy: A locked safe next to your open notebook. The notebook holds instructions; the safe holds the keys and passwords it references.</div>
+    </div>
+
+    <!-- NETLIFY -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">Netlify <span>Frontend hosting / deployment</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">A platform that hosts your frontend (HTML/CSS/JS) and deploys it automatically when you push to GitHub. Free tier is generous. It handles custom domains, HTTPS certificates, and serverless functions.</p>
+      <p class="relation"><strong>Stack:</strong> Netlify (frontend) + Supabase (backend/database)</p>
+      <div class="analogy">Analogy: A landlord who automatically repaints your shop window every time you send them an update, at no charge for basic use.</div>
+    </div>
+
+    <!-- SUPABASE -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">Supabase <span>Backend as a Service</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">An open-source platform that gives you a PostgreSQL database, user authentication, real-time subscriptions, and file storage, all without managing a server. You get a dashboard to manage your data and an API to connect your frontend.</p>
+      <div class="analogy">Analogy: A fully staffed back-office. It handles your filing, security, and records while you focus on the customer-facing side.</div>
+    </div>
+
+    <!-- VS CODE -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">VS Code <span>Visual Studio Code — code editor</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">Microsoft's free code editor, arguably the most popular in the world. It's where most developers write their code. It has syntax highlighting, autocomplete, Git integration built in, and thousands of extensions.</p>
+      <div class="analogy">Analogy: Microsoft Word, but built specifically for writing code, with tools that understand programming languages.</div>
+    </div>
+
+    <!-- CLAUDE CODE -->
+    <div class="card" data-cat="tool">
+      <div class="card-top">
+        <div class="term">Claude Code <span>Anthropic's agentic coding CLI</span></div>
+        <span class="tag tool">Tool / App</span>
+      </div>
+      <p class="desc">Anthropic's command-line tool that lets Claude (the AI) read, write, and edit files in your project directly from your Terminal. It understands your codebase and can make changes across multiple files. It runs on Node.js.</p>
+      <p class="relation"><strong>Requires:</strong> Node.js, Terminal access</p>
+      <div class="analogy">Analogy: Hiring a developer who can see your entire codebase and make changes, but you direct them via conversation in your Terminal.</div>
+    </div>
+
+    <!-- MCP -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">MCP <span>Model Context Protocol</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">An open standard created by Anthropic that lets AI models (like Claude) connect to external tools and services in a standardized way. MCP creates a common language so AI tools can plug into Google Drive, Notion, GitHub, and more consistently.</p>
+      <div class="analogy">Analogy: A universal power adapter. Instead of a different adapter for every country (tool), MCP is one standard plug that works everywhere.</div>
+    </div>
+
+    <!-- PACKAGE -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Package / Dependency <span>Library, module</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Reusable code someone else wrote that your project uses. Instead of writing every feature yourself, you install packages. A dependency is any package your project depends on to function. The package.json file lists all dependencies so anyone can install them with npm install.</p>
+      <p class="relation"><strong>Managed by:</strong> npm, yarn, pip (Python), etc.</p>
+      <div class="analogy">Analogy: Pre-made ingredients. You don't grind your own coffee beans when you can buy a bag. Packages are those bags of pre-made capability.</div>
+    </div>
+
+    <!-- PYTHON -->
+    <div class="card" data-cat="language">
+      <div class="card-top">
+        <div class="term">Python <span>Programming language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">One of the world's most popular programming languages. Known for its clean, readable syntax. Widely used in data science, AI/ML, automation, and backend web development.</p>
+      <div class="analogy">Analogy: The plain English of programming languages. Closer to human language than most, which makes it beginner-friendly but also powerful enough for cutting-edge AI work.</div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <div class="card" data-cat="language">
+      <div class="card-top">
+        <div class="term">JavaScript <span>JS — the language of the web</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">The only programming language that runs natively in every web browser. It makes websites interactive: form validation, animations, fetching data without reloading. Node.js lets it run outside browsers too.</p>
+      <div class="analogy">Analogy: HTML is the skeleton of a webpage, CSS is the styling, and JavaScript is the muscles that make it move and respond.</div>
+    </div>
+
+    <!-- HTML / CSS -->
+    <div class="card" data-cat="language">
+      <div class="card-top">
+        <div class="term">HTML / CSS <span>Structure and style</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">HTML (HyperText Markup Language) defines the structure and content of a web page: headings, paragraphs, buttons, images. CSS (Cascading Style Sheets) controls how it looks: colors, fonts, layout, spacing. They are not programming languages; they are markup and styling languages.</p>
+      <div class="analogy">Analogy: HTML is the blueprint of a building (what rooms exist). CSS is the interior design (how everything looks and is arranged).</div>
+    </div>
+
+    <!-- OPEN SOURCE -->
+    <div class="card" data-cat="concept">
+      <div class="card-top">
+        <div class="term">Open Source <span>OSS — publicly available code</span></div>
+        <span class="tag concept">Concept</span>
+      </div>
+      <p class="desc">Software whose source code is publicly available for anyone to read, use, modify, and contribute to. Git, Linux, Node.js, Python, and VS Code are all open source. The opposite is proprietary software, where the code is private.</p>
+      <div class="analogy">Analogy: A recipe book anyone can read, copy, modify, and contribute to. Versus a secret recipe locked in a vault.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>All terms accurate as of 2025 — dev terminology evolves, concepts stay the same.</p>
+  </footer>
+
 </div>
 
-<div class="grid" id="grid">
-
-  <!-- TERMINAL -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">Terminal <span>Also: Console, Command Line</span></div>
-      <span class="tag shell">Shell / CLI</span>
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="about-page">
+    <div class="about-card">
+      <div class="about-text">
+        <span class="about-label">About</span>
+        <p class="about-quote">"Too bored as a child. Too many ideas as an adult. And I am learning it all."</p>
+      </div>
+      <div class="about-photo-slot">
+        <span class="photo-icon">☻</span>
+        <span>Your photo<br>goes here</span>
+      </div>
     </div>
-    <p class="desc">A text-based window on your computer where you type commands directly. Instead of clicking buttons, you type instructions. The Terminal is the window itself; what runs inside it is a shell.</p>
-    <div class="analogy">Analogy: The Terminal is the room. The shell is the person inside who understands your instructions.</div>
   </div>
-
-  <!-- SHELL -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">Shell <span>bash, zsh, fish, sh</span></div>
-      <span class="tag shell">Shell / CLI</span>
-    </div>
-    <p class="desc">The program that runs inside a Terminal and interprets what you type. When you open Terminal on a Mac, you're almost certainly running a shell called zsh (Z Shell) or bash. It reads your commands and tells the operating system what to do.</p>
-    <div class="analogy">Analogy: The translator between you and the computer's core. You speak; the shell passes it on in a language the OS understands.</div>
-    <p class="relation"><strong>See also:</strong> Terminal, bash, zsh, PowerShell</p>
-  </div>
-
-  <!-- BASH -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">bash <span>Bourne Again SHell</span></div>
-      <span class="tag shell">Shell / CLI</span>
-    </div>
-    <p class="desc">The most widely used shell in the world. It's been the default on Linux and older Macs for decades. When someone shares a "bash script," it's a text file full of commands that bash will run in sequence, like a recipe.</p>
-    <div class="analogy">Analogy: The universal language of command lines. If Terminal is the room, bash is the dialect almost everyone speaks.</div>
-  </div>
-
-  <!-- ZSH -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">zsh <span>Z Shell</span></div>
-      <span class="tag shell">Shell / CLI</span>
-    </div>
-    <p class="desc">A modern shell that replaced bash as the Mac default in 2019. It's more powerful with better autocomplete and plugin support. If you've opened Terminal on a modern Mac, you've been using zsh without knowing it.</p>
-    <div class="analogy">Analogy: bash's more capable younger sibling. Same idea, better features.</div>
-  </div>
-
-  <!-- POWERSHELL -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">PowerShell <span>Windows shell</span></div>
-      <span class="tag shell">Shell / CLI</span>
-    </div>
-    <p class="desc">Microsoft's command-line shell for Windows. Much more powerful than the older Command Prompt (cmd.exe). It can also run on Mac and Linux. Commands in PowerShell are called "cmdlets" and follow a Verb-Noun pattern like Get-Files or Set-Location.</p>
-    <div class="analogy">Analogy: Microsoft's answer to bash. Same category of tool, built for Windows first.</div>
-    <p class="relation"><strong>Windows equivalent of:</strong> bash / zsh on Mac/Linux</p>
-  </div>
-
-  <!-- CMD -->
-  <div class="card" data-cat="shell">
-    <div class="card-top">
-      <div class="term">cmd / Command Prompt <span>cmd.exe</span></div>
-      <span class="tag shell">Shell / CLI</span>
-    </div>
-    <p class="desc">The original Windows command line, dating back to the DOS era. Still available on all Windows machines. Very limited compared to PowerShell. You'll occasionally see instructions reference it, but PowerShell is almost always better.</p>
-    <div class="analogy">Analogy: The old DOS era tool still kept alive. Functional, but outdated.</div>
-  </div>
-
-  <!-- SSH -->
-  <div class="card" data-cat="network">
-    <div class="card-top">
-      <div class="term">SSH <span>Secure Shell</span></div>
-      <span class="tag network">Network / Protocol</span>
-    </div>
-    <p class="desc">A way to securely connect to another computer over the internet and control it via the command line, as if you were sitting in front of it. Used constantly by developers to access remote servers. The connection is encrypted so no one can spy on what you're doing.</p>
-    <div class="analogy">Analogy: A secure, private telephone line between your laptop and a computer sitting in a data center on the other side of the world.</div>
-    <p class="relation"><strong>Related:</strong> Terminal (you SSH via it), servers, GitHub authentication</p>
-  </div>
-
-  <!-- NPM -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">npm <span>Node Package Manager</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">A tool that comes bundled with Node.js. It lets you install, share and manage code packages (libraries written by other developers) that your project depends on. When someone says "run npm install," they mean: download all the code this project needs to work.</p>
-    <div class="analogy">Analogy: The App Store for JavaScript code. Instead of building everything from scratch, you install packages someone else already wrote.</div>
-    <p class="relation"><strong>Requires:</strong> Node.js | <strong>Alternative:</strong> yarn, pnpm</p>
-  </div>
-
-  <!-- NODE.JS -->
-  <div class="card" data-cat="language">
-    <div class="card-top">
-      <div class="term">Node.js <span>JavaScript runtime</span></div>
-      <span class="tag language">Language / Runtime</span>
-    </div>
-    <p class="desc">JavaScript was originally only for browsers. Node.js lets you run JavaScript on your computer or a server, outside of any browser. This opened up JavaScript to backend development and tooling. Many dev tools (including npm, Claude Code, and Vite) are built on Node.js.</p>
-    <div class="analogy">Analogy: Taking JavaScript out of the browser and letting it run anywhere, like a car engine removed and put in a boat.</div>
-    <p class="relation"><strong>Enables:</strong> npm, Claude Code, most JS dev tools</p>
-  </div>
-
-  <!-- GIT -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">Git <span>Version Control System</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">A system that tracks every change you make to your code over time. You can go back to any previous version, work on experimental features in separate "branches," and merge changes together. Git runs locally on your machine. GitHub is a website that hosts your Git history online.</p>
-    <div class="analogy">Analogy: An infinite undo history for your entire project, with the ability to create parallel timelines and merge them back.</div>
-    <p class="relation"><strong>Not the same as:</strong> GitHub (GitHub hosts Git repositories online)</p>
-  </div>
-
-  <!-- GITHUB -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">GitHub <span>Code hosting platform</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">A website that stores your Git repositories online. Think of it as cloud storage specifically for code, with collaboration features built in. You push your code from your machine to GitHub. Others can see it, contribute, and you can deploy from it. GitHub Pages is a feature that lets you host simple websites for free directly from a repository.</p>
-    <div class="analogy">Analogy: Google Drive, but designed specifically for code, with version history baked in.</div>
-    <p class="relation"><strong>Powered by:</strong> Git | <strong>Competitors:</strong> GitLab, Bitbucket</p>
-  </div>
-
-  <!-- CLI -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">CLI <span>Command Line Interface</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Any tool or program you control entirely by typing text commands, rather than clicking buttons. The opposite is a GUI (Graphical User Interface). Developers use CLIs because they're fast, scriptable, and work on any machine. When docs say "run this in your CLI," they mean open Terminal and type it.</p>
-    <div class="analogy">Analogy: Giving instructions by typing a precise note versus navigating menus. More effort to learn, but much faster once you know it.</div>
-  </div>
-
-  <!-- GUI -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">GUI <span>Graphical User Interface</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Any interface you interact with visually: buttons, menus, windows. Most apps people use daily are GUIs. The opposite of a CLI. When someone builds a "frontend," they're building a GUI. VS Code has a GUI, but also accepts CLI commands.</p>
-    <div class="analogy">Analogy: Everything you normally click on a computer. Most of the digital world is a GUI.</div>
-  </div>
-
-  <!-- API -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">API <span>Application Programming Interface</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A defined way for two pieces of software to talk to each other. When your app asks Supabase for data, it uses Supabase's API. When you use Anthropic's Claude in code, you call the Claude API. APIs have rules: send a request in this format, and you'll get a response in that format.</p>
-    <div class="analogy">Analogy: A waiter in a restaurant. You don't go into the kitchen yourself. You tell the waiter (API) what you want, and it comes back with the result.</div>
-  </div>
-
-  <!-- HTTP / HTTPS -->
-  <div class="card" data-cat="network">
-    <div class="card-top">
-      <div class="term">HTTP / HTTPS <span>HyperText Transfer Protocol (Secure)</span></div>
-      <span class="tag network">Network / Protocol</span>
-    </div>
-    <p class="desc">The rules that govern how data travels between your browser and a website. HTTP is the base version; HTTPS adds encryption (the S stands for Secure). Every website URL starts with one of these. HTTPS is the standard now; browsers flag plain HTTP as unsafe.</p>
-    <div class="analogy">Analogy: The postal rules that define how a letter gets from sender to receiver. HTTPS adds a sealed envelope so no one can read it in transit.</div>
-  </div>
-
-  <!-- localhost -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">localhost <span>127.0.0.1</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A special address that always refers to your own computer. When you run a web server locally for development, you visit localhost:3000 (or similar) in your browser to see it. The number after the colon is the port. Nothing on localhost is visible to anyone else online.</p>
-    <div class="analogy">Analogy: A private preview only you can see, running on your own machine before anything goes live on the internet.</div>
-    <p class="relation"><strong>Related:</strong> dev server, port, IP address</p>
-  </div>
-
-  <!-- PORT -->
-  <div class="card" data-cat="network">
-    <div class="card-top">
-      <div class="term">Port <span>Network port number</span></div>
-      <span class="tag network">Network / Protocol</span>
-    </div>
-    <p class="desc">A numbered "channel" on a computer that a specific program listens on. Your computer has thousands of ports. Port 80 is standard HTTP, 443 is HTTPS, 3000 and 8080 are common development ports. When you see localhost:3000, the 3000 is the port.</p>
-    <div class="analogy">Analogy: Your home address is the computer. The port is the specific apartment number within it. Multiple programs live at the same address on different ports.</div>
-  </div>
-
-  <!-- DNS -->
-  <div class="card" data-cat="network">
-    <div class="card-top">
-      <div class="term">DNS <span>Domain Name System</span></div>
-      <span class="tag network">Network / Protocol</span>
-    </div>
-    <p class="desc">The internet's phone book. When you type "google.com" in a browser, DNS converts that human-readable name into the actual numeric IP address that computers use to find the server. Without DNS, you'd need to remember IP addresses to visit any website.</p>
-    <div class="analogy">Analogy: Saving contacts by name on your phone. You say "call Mom," the phone looks up her number. DNS does the same for websites.</div>
-  </div>
-
-  <!-- IP ADDRESS -->
-  <div class="card" data-cat="network">
-    <div class="card-top">
-      <div class="term">IP Address <span>Internet Protocol Address</span></div>
-      <span class="tag network">Network / Protocol</span>
-    </div>
-    <p class="desc">A unique numerical address assigned to every device on a network. Like a postal address for computers. IPv4 addresses look like 192.168.1.1. IPv6 is a newer format to handle more devices. Your router has a public IP; devices on your home network have local IPs.</p>
-    <div class="analogy">Analogy: Your home's street address, but for computers on a network.</div>
-  </div>
-
-  <!-- SERVER -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Server <span>Web server / remote machine</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A computer (or program) that waits for requests and responds to them. A web server receives HTTP requests and sends back web pages. A database server stores and retrieves data. "Server" can mean the physical machine in a data center, or just the software program responding to requests.</p>
-    <div class="analogy">Analogy: A restaurant that's always open. You place an order (send a request), it prepares and returns what you asked for (sends a response).</div>
-  </div>
-
-  <!-- DATABASE -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Database <span>SQL, Postgres, Supabase</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">An organized system for storing, retrieving and managing data. Relational databases (like PostgreSQL, which powers Supabase) store data in tables with rows and columns, like a very powerful spreadsheet. You query them using SQL to get the data you need.</p>
-    <div class="analogy">Analogy: An enormous, perfectly organized filing system that can answer questions like "give me every user who signed up last month" instantly.</div>
-    <p class="relation"><strong>Used in 168 app stack:</strong> Supabase (built on PostgreSQL)</p>
-  </div>
-
-  <!-- SQL -->
-  <div class="card" data-cat="language">
-    <div class="card-top">
-      <div class="term">SQL <span>Structured Query Language</span></div>
-      <span class="tag language">Language / Runtime</span>
-    </div>
-    <p class="desc">The language used to talk to relational databases. You write SQL to ask questions ("SELECT all users"), add data ("INSERT a new record"), or change data ("UPDATE this row"). It reads almost like English. Most backend developers need to know at least basic SQL.</p>
-    <div class="analogy">Analogy: The language for asking questions to a database. "Give me all rows where the city is Cape Town" is practically what the SQL looks like.</div>
-  </div>
-
-  <!-- FRONTEND / BACKEND -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Frontend / Backend <span>Client-side / Server-side</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Frontend is everything the user sees and interacts with: the interface in their browser. Backend is everything happening on the server: data storage, logic, authentication. Your 168 app's HTML/CSS/JS is the frontend. Supabase handles the backend. Full-stack means working on both.</p>
-    <div class="analogy">Analogy: A restaurant again. Frontend is the dining room and menu. Backend is the kitchen, inventory, and accounting.</div>
-  </div>
-
-  <!-- DEPLOYMENT / DEPLOY -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Deploy <span>Deployment / Ship / Go live</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">The act of publishing your code so real users can access it on the internet. Before deployment, your app lives only on your machine. After deployment, it's live at a URL. Netlify (in your stack) handles this automatically when you push code to GitHub.</p>
-    <div class="analogy">Analogy: Printing a document and handing it out. Development is writing the draft; deployment is publishing it to the world.</div>
-    <p class="relation"><strong>Your deploy platform:</strong> Netlify</p>
-  </div>
-
-  <!-- REPOSITORY / REPO -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Repository <span>Repo</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A folder that Git tracks. Every project typically lives in its own repository. It contains all your code files plus a hidden .git folder where Git stores the entire history of changes. On GitHub, a repository is a project's home with all its history, branches, and settings.</p>
-    <div class="analogy">Analogy: A binder with every draft of a document you've ever saved, labeled by date and description, never throwing anything away.</div>
-  </div>
-
-  <!-- BRANCH -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Branch <span>Git branch</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A separate, parallel version of your code within the same repository. The main branch is typically the stable, live version. You create a new branch to work on a feature or experiment without affecting main. When the work is ready, you merge the branch back in. This is exactly what you did with your "claude-dev" branch.</p>
-    <div class="analogy">Analogy: A photocopy of a document you're allowed to scribble on. The original stays safe until you decide to apply your changes.</div>
-  </div>
-
-  <!-- COMMIT -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Commit <span>Git commit</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">A saved snapshot of your code at a specific point in time. Every commit has a message describing what changed. Git history is just a sequence of commits. Think of commits as manual save points that stack up into a timeline you can always scroll back through.</p>
-    <div class="analogy">Analogy: A checkpoint in a game. You can always load a previous save if something goes wrong.</div>
-  </div>
-
-  <!-- PUSH / PULL -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Push / Pull <span>Git push, git pull</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Push: sending your local commits up to GitHub (or another remote). Pull: downloading commits from GitHub to your local machine. These two commands keep your local code and the online repository in sync. You push your changes; your collaborators pull them down.</p>
-    <div class="analogy">Analogy: Push is uploading a file to Google Drive. Pull is downloading changes someone else made to a shared document.</div>
-  </div>
-
-  <!-- ENVIRONMENT VARIABLES / .ENV -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">.env / Environment Variables <span>Secrets and config</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Variables stored outside your code that hold sensitive information like API keys, passwords, and database URLs. A .env file keeps these off your actual codebase so they don't accidentally get committed to GitHub for the public to see. Netlify and Supabase both have dashboards where you set these securely.</p>
-    <div class="analogy">Analogy: A locked safe next to your open notebook. The notebook holds instructions; the safe holds the keys and passwords it references.</div>
-  </div>
-
-  <!-- NETLIFY -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">Netlify <span>Frontend hosting / deployment</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">A platform that hosts your frontend (HTML/CSS/JS) and deploys it automatically when you push to GitHub. Free tier is generous. It handles custom domains, HTTPS certificates, and serverless functions. It's what makes your 168 app accessible at a real URL without managing a server yourself.</p>
-    <div class="analogy">Analogy: A landlord who automatically repaints your shop window every time you send them an update, at no charge for basic use.</div>
-    <p class="relation"><strong>Your 168 app stack:</strong> Netlify (frontend) + Supabase (backend/database)</p>
-  </div>
-
-  <!-- SUPABASE -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">Supabase <span>Backend as a Service</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">An open-source platform that gives you a PostgreSQL database, user authentication, real-time subscriptions, and file storage, all without managing a server. You get a dashboard to manage your data and an API to connect your frontend. It handles the backend infrastructure so you can focus on building your app.</p>
-    <div class="analogy">Analogy: A fully staffed back-office. It handles your filing, security, and records while you focus on the customer-facing side.</div>
-  </div>
-
-  <!-- VS CODE -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">VS Code <span>Visual Studio Code — code editor</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">Microsoft's free code editor, arguably the most popular in the world. It's where most developers write their code. It has syntax highlighting, autocomplete, Git integration built in, and thousands of extensions. Not to be confused with Visual Studio (a heavier IDE from the same company).</p>
-    <div class="analogy">Analogy: Microsoft Word, but built specifically for writing code, with tools that understand programming languages.</div>
-  </div>
-
-  <!-- CLAUDE CODE -->
-  <div class="card" data-cat="tool">
-    <div class="card-top">
-      <div class="term">Claude Code <span>Anthropic's agentic coding CLI</span></div>
-      <span class="tag tool">Tool / App</span>
-    </div>
-    <p class="desc">Anthropic's command-line tool that lets Claude (the AI) read, write, and edit files in your project directly from your Terminal. It understands your codebase and can make changes across multiple files. It runs on Node.js, which is why you had to install Node.js before setting it up.</p>
-    <div class="analogy">Analogy: Hiring a developer who can see your entire codebase and make changes, but you direct them via conversation in your Terminal.</div>
-    <p class="relation"><strong>Requires:</strong> Node.js, Terminal access</p>
-  </div>
-
-  <!-- MCP -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">MCP <span>Model Context Protocol</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">An open standard created by Anthropic that lets AI models (like Claude) connect to external tools and services in a standardized way. Instead of building one-off integrations, MCP creates a common language so AI tools can plug into things like Google Drive, Notion, GitHub, and more in a consistent way.</p>
-    <div class="analogy">Analogy: A universal power adapter. Instead of a different adapter for every country (tool), MCP is one standard plug that works everywhere.</div>
-  </div>
-
-  <!-- PACKAGE / DEPENDENCY -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Package / Dependency <span>Library, module</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Reusable code someone else wrote that your project uses. Instead of writing every feature yourself, you install packages. A dependency is any package your project depends on to function. The package.json file in a Node.js project lists all dependencies so anyone else can install them with npm install.</p>
-    <div class="analogy">Analogy: Pre-made ingredients. You don't grind your own coffee beans when you can buy a bag. Packages are those bags of pre-made capability.</div>
-    <p class="relation"><strong>Managed by:</strong> npm, yarn, pip (Python), etc.</p>
-  </div>
-
-  <!-- PYTHON -->
-  <div class="card" data-cat="language">
-    <div class="card-top">
-      <div class="term">Python <span>Programming language</span></div>
-      <span class="tag language">Language / Runtime</span>
-    </div>
-    <p class="desc">One of the world's most popular programming languages. Known for its clean, readable syntax. Widely used in data science, AI/ML, automation, and backend web development. You used a Python HTTP server to preview your Rugby site locally (python3 -m http.server).</p>
-    <div class="analogy">Analogy: The plain English of programming languages. Closer to human language than most, which makes it beginner-friendly but also powerful enough for cutting-edge AI work.</div>
-  </div>
-
-  <!-- JavaScript -->
-  <div class="card" data-cat="language">
-    <div class="card-top">
-      <div class="term">JavaScript <span>JS — the language of the web</span></div>
-      <span class="tag language">Language / Runtime</span>
-    </div>
-    <p class="desc">The only programming language that runs natively in every web browser. It makes websites interactive: form validation, animations, fetching data without reloading. Your 168 app is built in HTML, CSS, and JavaScript. Node.js lets it run outside browsers too.</p>
-    <div class="analogy">Analogy: HTML is the skeleton of a webpage, CSS is the styling, and JavaScript is the muscles that make it move and respond.</div>
-  </div>
-
-  <!-- HTML / CSS -->
-  <div class="card" data-cat="language">
-    <div class="card-top">
-      <div class="term">HTML / CSS <span>Structure and style</span></div>
-      <span class="tag language">Language / Runtime</span>
-    </div>
-    <p class="desc">HTML (HyperText Markup Language) defines the structure and content of a web page: headings, paragraphs, buttons, images. CSS (Cascading Style Sheets) controls how it looks: colors, fonts, layout, spacing. Every website in the world is built on these two. They are not programming languages; they are markup and styling languages.</p>
-    <div class="analogy">Analogy: HTML is the blueprint of a building (what rooms exist). CSS is the interior design (how everything looks and is arranged).</div>
-  </div>
-
-  <!-- OPEN SOURCE -->
-  <div class="card" data-cat="concept">
-    <div class="card-top">
-      <div class="term">Open Source <span>OSS — publicly available code</span></div>
-      <span class="tag concept">Concept</span>
-    </div>
-    <p class="desc">Software whose source code is publicly available for anyone to read, use, modify, and contribute to. Git, Linux, Node.js, Python, and VS Code are all open source. The opposite is proprietary software, where the code is private. Most developer tools and frameworks you'll use are open source.</p>
-    <div class="analogy">Analogy: A recipe book anyone can read, copy, modify, and contribute to. Versus a secret recipe locked in a vault.</div>
-  </div>
-
 </div>
-
-<footer>
-  <p>All terms accurate as of 2025 — dev terminology evolves, concepts stay the same.</p>
-</footer>
 
 <script>
+  // ── NAV ROUTING ──
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const pages = document.querySelectorAll('.page');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.page;
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + target).classList.add('active');
+    });
+  });
+
+  // ── FILTERS ──
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.card');
 
