@@ -25,6 +25,10 @@
     --tag-lang-text: #40f0a0;
     --tag-concept: #2a0010;
     --tag-concept-text: #f04080;
+    --tag-framework: #1a0a00;
+    --tag-framework-text: #f08040;
+    --tag-library: #001818;
+    --tag-library-text: #40e0c0;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,65 +38,7 @@
     color: var(--text);
     font-family: 'Syne', sans-serif;
     min-height: 100vh;
-    padding: 0;
   }
-
-  /* ── NAV ── */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
-    height: 52px;
-    background: #0a0a0a;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0;
-    list-style: none;
-  }
-
-  .nav-links li a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 6px 16px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    transition: color 0.15s, background 0.15s;
-    cursor: pointer;
-    display: block;
-  }
-
-  .nav-links li a:hover { color: var(--text); }
-  .nav-links li a.active { color: var(--accent); }
-
-  .nav-links li:last-child a {
-    margin-left: 16px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .nav-links li:last-child a:hover { border-color: var(--accent); color: var(--accent); }
-  .nav-links li:last-child a.active { border-color: var(--accent); color: var(--accent); }
-
-  /* ── PAGES ── */
-  .page { display: none; }
-  .page.active { display: block; }
 
   /* ── HEADER ── */
   header {
@@ -115,13 +61,73 @@
     color: var(--accent);
   }
 
-  header p {
+  .subtext {
     margin-top: 12px;
     color: var(--muted);
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     max-width: 560px;
+    line-height: 1.7;
   }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    height: 44px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-center a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s;
+    cursor: pointer;
+    display: block;
+  }
+
+  .nav-center a:hover { color: var(--text); }
+  .nav-center a.active { color: var(--accent); }
+
+  .nav-about {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 14px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s, border-color 0.15s;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+  }
+  .nav-about:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-about.active { border-color: var(--accent); color: var(--accent); }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
 
   /* ── FILTERS ── */
   .legend {
@@ -221,6 +227,8 @@
   .tag.tool { background: var(--tag-tool); color: var(--tag-tool-text); }
   .tag.language { background: var(--tag-lang); color: var(--tag-lang-text); }
   .tag.concept { background: var(--tag-concept); color: var(--tag-concept-text); }
+  .tag.framework { background: var(--tag-framework); color: var(--tag-framework-text); }
+  .tag.library { background: var(--tag-library); color: var(--tag-library-text); }
 
   .desc {
     font-size: 0.88rem;
@@ -250,7 +258,7 @@
 
   /* ── ABOUT PAGE ── */
   .about-page {
-    min-height: calc(100vh - 52px);
+    min-height: calc(100vh - 44px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -338,22 +346,25 @@
 </head>
 <body>
 
+<!-- HEADER -->
+<header>
+  <h1>Terminally<br>Curious</h1>
+  <p class="subtext">Every shell, tool, protocol and concept you keep hearing about.<br>Plain language, no fluff.</p>
+</header>
+
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Terminally Curious</span>
-  <ul class="nav-links">
-    <li><a href="#" class="active" data-page="terminology">Terminology</a></li>
-    <li><a href="#" data-page="about">About</a></li>
-  </ul>
+  <div class="nav-center">
+    <a href="#" data-page="frameworks">Frameworks</a>
+    <a href="#" data-page="languages">Languages</a>
+    <a href="#" data-page="libraries">Libraries</a>
+    <a href="#" data-page="terminology" class="active">Terminology</a>
+  </div>
+  <a href="#" class="nav-about" data-page="about">About</a>
 </nav>
 
 <!-- TERMINOLOGY PAGE -->
 <div class="page active" id="page-terminology">
-
-  <header>
-    <h1>Terminally<br>Curious</h1>
-    <p class="subtext">Every shell, tool, protocol and concept you keep hearing about.<br>Plain language, no fluff.</p>
-  </header>
 
   <div class="legend">
     <span class="legend-label">Filter:</span>
@@ -365,7 +376,7 @@
     <button class="filter-btn" data-cat="concept">Concept</button>
   </div>
 
-  <div class="grid" id="grid">
+  <div class="grid" id="grid-terminology">
 
     <!-- TERMINAL -->
     <div class="card" data-cat="shell">
@@ -777,6 +788,267 @@
 
 </div>
 
+<!-- FRAMEWORKS PAGE -->
+<div class="page" id="page-frameworks">
+  <div class="grid">
+
+    <!-- REACT -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">React <span>JavaScript UI library</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A JavaScript library by Meta for building user interfaces. React breaks UIs into reusable components — each a self-contained piece of code that manages its own state and renders HTML. It's the most widely used frontend tool and the foundation of Next.js.</p>
+      <p class="relation"><strong>See also:</strong> Next.js, JavaScript, Node.js</p>
+      <div class="analogy">Analogy: LEGO bricks. Each component is a brick with a defined shape. You assemble them into any structure you want.</div>
+    </div>
+
+    <!-- VUE.JS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Vue.js <span>Progressive JavaScript framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A progressive JavaScript framework for building web UIs. Simpler to learn than React, still very capable. "Progressive" means you can adopt it incrementally — drop it into an existing page or use it to build a full app from scratch.</p>
+      <p class="relation"><strong>See also:</strong> React, JavaScript</p>
+      <div class="analogy">Analogy: A more opinionated LEGO set. Less total flexibility than React, but the instructions are clearer and the pieces fit together faster.</div>
+    </div>
+
+    <!-- NEXT.JS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Next.js <span>React framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A framework built on top of React that adds server-side rendering, file-based routing, and performance optimisations. If React is the engine, Next.js is the whole car. It handles the parts React leaves to you: URL routing, data loading, image optimisation.</p>
+      <p class="relation"><strong>Built on:</strong> React | <strong>Hosting:</strong> Vercel, Netlify</p>
+      <div class="analogy">Analogy: React with everything pre-assembled — engine, chassis, GPS, and fuel-efficiency baked in.</div>
+    </div>
+
+    <!-- EXPRESS.JS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Express.js <span>Node.js web framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">The most popular Node.js framework for building web servers and APIs. Minimal and flexible — it gives you routing and middleware, and you add what you need. Most Node.js backend tutorials use Express as their starting point.</p>
+      <p class="relation"><strong>Requires:</strong> Node.js | <strong>See also:</strong> API, Server</p>
+      <div class="analogy">Analogy: Bare metal for web servers in JavaScript. You get the wiring; you decide what plugs in where.</div>
+    </div>
+
+    <!-- DJANGO -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Django <span>Python web framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A batteries-included Python web framework. It ships with an admin interface, database ORM, user authentication, and more out of the box. Its philosophy: don't repeat yourself. Popular for building data-heavy web applications quickly.</p>
+      <p class="relation"><strong>Language:</strong> Python | <strong>See also:</strong> FastAPI, SQL</p>
+      <div class="analogy">Analogy: A fully furnished apartment. Move in and start working. No assembling furniture required.</div>
+    </div>
+
+    <!-- FASTAPI -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">FastAPI <span>Python API framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A modern Python framework built specifically for APIs. Much faster at runtime than Django for pure API work. Automatically generates interactive documentation from your code. Widely used in AI and data science backends.</p>
+      <p class="relation"><strong>Language:</strong> Python | <strong>See also:</strong> Django, API</p>
+      <div class="analogy">Analogy: A race car version of a Python API server. Stripped down and purpose-built for speed.</div>
+    </div>
+
+    <!-- TAILWIND CSS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Tailwind CSS <span>Utility-first CSS framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">A CSS framework that provides utility classes instead of pre-built components. Instead of writing custom CSS, you apply classes like flex, text-xl, and bg-black directly in your HTML. Controversial at first glance, extremely popular in practice.</p>
+      <p class="relation"><strong>See also:</strong> HTML / CSS, Bootstrap</p>
+      <div class="analogy">Analogy: A massive set of labelled materials — every brick, plank, and fitting pre-cut to size. No pre-built rooms, but you can build anything fast.</div>
+    </div>
+
+    <!-- BOOTSTRAP -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Bootstrap <span>CSS component framework</span></div>
+        <span class="tag framework">Framework</span>
+      </div>
+      <p class="desc">The original CSS framework. Provides pre-styled components: buttons, navbars, modals, grids. Widely used, easy to get started with. Sometimes criticised for making sites look similar. Tailwind has replaced it in many newer projects.</p>
+      <p class="relation"><strong>See also:</strong> HTML / CSS, Tailwind CSS</p>
+      <div class="analogy">Analogy: A furniture kit from a catalogue. Pick what you need, snap it in. Faster than building from scratch, less unique.</div>
+    </div>
+
+  </div>
+  <footer>
+    <p>All terms accurate as of 2025 — dev terminology evolves, concepts stay the same.</p>
+  </footer>
+</div>
+
+<!-- LANGUAGES PAGE -->
+<div class="page" id="page-languages">
+  <div class="grid">
+
+    <!-- TYPESCRIPT -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">TypeScript <span>Typed JavaScript superset</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">A superset of JavaScript created by Microsoft. It adds static typing — you declare what type a variable should hold, and TypeScript catches errors before your code runs. All valid JavaScript is valid TypeScript. It compiles down to plain JavaScript to run in the browser or Node.js.</p>
+      <p class="relation"><strong>See also:</strong> JavaScript, Node.js</p>
+      <div class="analogy">Analogy: JavaScript with spell-check. The extra rules slow you down initially but prevent entire categories of bugs before they ever reach production.</div>
+    </div>
+
+    <!-- GO -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Go <span>Golang — compiled systems language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">A compiled, statically typed language designed at Google for simplicity and performance. Known for excellent handling of concurrent tasks. Popular for building APIs, CLIs, and infrastructure tools. Compiles to a single binary with no runtime dependencies — just copy the file and run it.</p>
+      <p class="relation"><strong>See also:</strong> Python, Rust</p>
+      <div class="analogy">Analogy: A purpose-built delivery van. Not the flashiest vehicle, but reliable, fast, and built to carry heavy loads efficiently without drama.</div>
+    </div>
+
+    <!-- RUST -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Rust <span>Systems programming language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">A systems language focused on memory safety and performance. No garbage collector — memory is managed at compile time via an ownership system. Steep learning curve, but produces extremely fast and safe code. Popular for CLIs, WebAssembly, and systems-level work.</p>
+      <p class="relation"><strong>See also:</strong> Go, C / C++</p>
+      <div class="analogy">Analogy: A manual car with extra safety interlocks. Harder to drive, but you understand exactly what's happening under the hood and nothing can silently go wrong.</div>
+    </div>
+
+    <!-- RUBY -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Ruby <span>Dynamic, expressive language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">A dynamic language designed for programmer happiness. Known for Ruby on Rails, the framework that defined modern web development conventions. Less dominant than it once was, but the ideas it introduced — convention over configuration — shaped every framework that followed.</p>
+      <p class="relation"><strong>Famous for:</strong> Ruby on Rails | <strong>See also:</strong> Python</p>
+      <div class="analogy">Analogy: The language built around the developer's joy. Syntax reads close to natural English, and it shaped how the whole industry thought about web frameworks.</div>
+    </div>
+
+    <!-- SWIFT -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Swift <span>Apple's programming language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">Apple's language for building iOS and macOS apps. It replaced Objective-C as the standard for Apple development. Fast, safe, and modern in syntax. If you want to build a native iPhone or Mac app, Swift is where you start.</p>
+      <p class="relation"><strong>Platform:</strong> iOS, macOS | <strong>See also:</strong> Kotlin (Android)</p>
+      <div class="analogy">Analogy: The language Apple built specifically for its own world. Fluent in iOS and macOS; less relevant outside Apple's ecosystem.</div>
+    </div>
+
+    <!-- KOTLIN -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Kotlin <span>Modern JVM language</span></div>
+        <span class="tag language">Language / Runtime</span>
+      </div>
+      <p class="desc">Google's preferred language for Android app development. It runs on the Java Virtual Machine (JVM) and is fully interoperable with Java. More concise and safer than Java, with modern language features. Also used for backend development via frameworks like Ktor.</p>
+      <p class="relation"><strong>Platform:</strong> Android, JVM | <strong>See also:</strong> Swift (iOS)</p>
+      <div class="analogy">Analogy: Java's more modern, friendlier replacement. Same runtime underneath, far less boilerplate on top.</div>
+    </div>
+
+  </div>
+  <footer>
+    <p>All terms accurate as of 2025 — dev terminology evolves, concepts stay the same.</p>
+  </footer>
+</div>
+
+<!-- LIBRARIES PAGE -->
+<div class="page" id="page-libraries">
+  <div class="grid">
+
+    <!-- AXIOS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Axios <span>HTTP request library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">A JavaScript library for making HTTP requests — calling APIs — from the browser or Node.js. More ergonomic than the built-in fetch API. Handles JSON parsing, request timeouts, and error formatting in a cleaner, more predictable way.</p>
+      <p class="relation"><strong>Language:</strong> JavaScript | <strong>See also:</strong> API, HTTP / HTTPS</p>
+      <div class="analogy">Analogy: A polished postal service. You hand it a letter (request); it handles the delivery and brings back the reply already opened and readable.</div>
+    </div>
+
+    <!-- LODASH -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Lodash <span>JavaScript utility library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">A JavaScript utility library with hundreds of helper functions for working with arrays, objects, and strings. Reduces repetitive code. Functions like groupBy, flatten, and debounce save writing the same logic over and over across every project.</p>
+      <p class="relation"><strong>Language:</strong> JavaScript | <strong>Installed via:</strong> npm</p>
+      <div class="analogy">Analogy: A kitchen full of specialty tools. You could do everything with a knife, but a mandolin, a zester, and a peeler make the job faster and cleaner.</div>
+    </div>
+
+    <!-- JQUERY -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">jQuery <span>DOM manipulation library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">Once the dominant JavaScript library. Made it easy to manipulate HTML elements, handle events, and make requests across different browsers. Modern JavaScript has absorbed most of what jQuery offered. Legacy codebases still use it widely — you'll encounter it.</p>
+      <p class="relation"><strong>Language:</strong> JavaScript | <strong>See also:</strong> JavaScript, DOM</p>
+      <div class="analogy">Analogy: The utility belt web developers wore for a decade. Mostly replaced by native browser tools, but still running under the hood of a huge amount of existing web software.</div>
+    </div>
+
+    <!-- D3.JS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">D3.js <span>Data visualisation library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">A JavaScript library for creating data visualisations in the browser. Extremely powerful and flexible — you define exactly how data maps to visual shapes and positions. Used for custom charts, maps, and interactive graphics where off-the-shelf chart tools aren't enough.</p>
+      <p class="relation"><strong>Language:</strong> JavaScript | <strong>See also:</strong> Chart.js</p>
+      <div class="analogy">Analogy: A professional illustrator's toolkit. You can draw anything imaginable, but you draw it yourself, line by line.</div>
+    </div>
+
+    <!-- CHART.JS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Chart.js <span>Simple charting library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">A JavaScript library for drawing common charts and graphs. Much simpler than D3.js — pick a chart type, pass in data, get a visual. Covers most everyday needs: bar, line, pie, doughnut, radar. Good default aesthetics with minimal setup.</p>
+      <p class="relation"><strong>Language:</strong> JavaScript | <strong>See also:</strong> D3.js</p>
+      <div class="analogy">Analogy: A chart builder where you fill in the spreadsheet and choose a style. D3.js is the artist; Chart.js is the template.</div>
+    </div>
+
+    <!-- PANDAS -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">Pandas <span>Python data analysis library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">Python's go-to library for data analysis and manipulation. Provides DataFrames — table-like structures that let you load, clean, filter, and transform data with minimal code. Essential in data science, analytics, and any Python work that involves spreadsheets or databases.</p>
+      <p class="relation"><strong>Language:</strong> Python | <strong>See also:</strong> NumPy, SQL</p>
+      <div class="analogy">Analogy: Excel, but scriptable and infinitely more powerful. A table that can reshape, filter, and calculate itself on command.</div>
+    </div>
+
+    <!-- NUMPY -->
+    <div class="card">
+      <div class="card-top">
+        <div class="term">NumPy <span>Python numerical computing library</span></div>
+        <span class="tag library">Library</span>
+      </div>
+      <p class="desc">Python's numerical computing library. Provides multi-dimensional arrays and mathematical functions that run far faster than native Python. The foundation of Python's scientific and AI computing ecosystem — Pandas, TensorFlow, and most ML libraries are built on top of it.</p>
+      <p class="relation"><strong>Language:</strong> Python | <strong>See also:</strong> Pandas</p>
+      <div class="analogy">Analogy: The engine underneath most of Python's data and AI work. Most people never call it directly, but it's running everything.</div>
+    </div>
+
+  </div>
+  <footer>
+    <p>All terms accurate as of 2025 — dev terminology evolves, concepts stay the same.</p>
+  </footer>
+</div>
+
 <!-- ABOUT PAGE -->
 <div class="page" id="page-about">
   <div class="about-page">
@@ -795,30 +1067,30 @@
 
 <script>
   // ── NAV ROUTING ──
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const allNavLinks = document.querySelectorAll('[data-page]');
   const pages = document.querySelectorAll('.page');
 
-  navLinks.forEach(link => {
+  allNavLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const target = link.dataset.page;
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+      allNavLinks.forEach(l => l.classList.remove('active'));
+      document.querySelectorAll(`[data-page="${target}"]`).forEach(l => l.classList.add('active'));
       pages.forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + target).classList.add('active');
     });
   });
 
-  // ── FILTERS ──
+  // ── FILTERS (scoped to terminology page) ──
   const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.card');
+  const termCards = document.querySelectorAll('#page-terminology .card');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.dataset.cat;
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      cards.forEach(card => {
+      termCards.forEach(card => {
         if (cat === 'all' || card.dataset.cat === cat) {
           card.classList.remove('hidden');
         } else {
